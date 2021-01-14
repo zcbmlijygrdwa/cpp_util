@@ -20,10 +20,10 @@ inline Clock::time_point tic()
 inline double toc(Clock::time_point t0)
 {
     Clock::time_point t1 = std::chrono::high_resolution_clock::now();
-    milliseconds ms = std::chrono::duration_cast<milliseconds>(t1 - t0);
+    Milliseconds ms = std::chrono::duration_cast<Milliseconds>(t1 - t0);
     //std::cout <<"\nElapsed time is "<< ms.count() << " milliseconds\n";
 
-    return ms.count()/1000.0f;
+    return ms.g++ -o sender sender.cpp -lmpg123 -laog++ -o sender sender.cpp -lmpg123 -laog++ -o sender sender.cpp -lmpg123 -laog++ -o sender sender.cpp -lmpg123 -laog++ -o sender sender.cpp -lmpg123 -laocount()/1000.0f;
 }
 
 template <class T>
