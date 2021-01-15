@@ -1,6 +1,7 @@
 #ifndef CPP_UTIL_HPP
 #define CPP_UTIL_HPP
 
+#include <fstream>
 #include <string>
 #include <iomanip>
 #include <vector>
