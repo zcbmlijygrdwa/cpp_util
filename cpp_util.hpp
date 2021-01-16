@@ -90,4 +90,16 @@ void readFileToBuffer(char* file_path, char** file_data_buffer, size_t* file_siz
     infile.close();
 }
 
+
+char computeChecksum(void* buffer, long data_size_byte)
+{
+    char checksum = 0;
+    for(long i = 0 ; i < data_size_byte ; i++)
+    {
+        checksum = checksum + ((char*)buffer)[i];
+    }
+
+    return checksum;
+}
+
 #endif
