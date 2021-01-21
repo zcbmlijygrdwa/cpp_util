@@ -11,6 +11,7 @@
 
 using Clock = std::chrono::high_resolution_clock;
 using Milliseconds = std::chrono::milliseconds;
+using Nanoseconds = std::chrono::nanoseconds;
 
 inline Clock::time_point tic()
 {
@@ -21,10 +22,12 @@ inline Clock::time_point tic()
 inline double toc(Clock::time_point t0)
 {
     Clock::time_point t1 = std::chrono::high_resolution_clock::now();
-    Milliseconds ms = std::chrono::duration_cast<Milliseconds>(t1 - t0);
+    //Milliseconds ms = std::chrono::duration_cast<Milliseconds>(t1 - t0);
+    Nanoseconds ns = std::chrono::duration_cast<Nanoseconds>(t1 - t0);
     //std::cout <<"\nElapsed time is "<< ms.count() << " milliseconds\n";
 
-    return ms.count()/1000.0f;
+    return ns.count()/1000000000.0f;
+    //return ms.count()/1000.0f;
 }
 
 template <class T>
