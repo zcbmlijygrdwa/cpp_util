@@ -73,7 +73,7 @@ void assertEquals(T expected, T actual,std::string message="")
 
 #define ASSERT_EQUALS(expected,actual) assertEquals(expected,actual,#actual)
 
-void readFileToBuffer(char* file_path, char** file_data_buffer, size_t* file_size_bytes)
+void readFileToBuffer(char* file_path, unsigned char** file_data_buffer, size_t* file_size_bytes)
 {
     //open file
     std::ifstream infile(file_path);
@@ -85,10 +85,10 @@ void readFileToBuffer(char* file_path, char** file_data_buffer, size_t* file_siz
 
     printv(*file_size_bytes);
 
-    *file_data_buffer = (char*)calloc(*file_size_bytes, sizeof(char));
+    *file_data_buffer = (unsigned char*)calloc(*file_size_bytes, sizeof(unsigned char));
 
     //read file
-    infile.read(*file_data_buffer, *file_size_bytes);
+    infile.read((char*)(*file_data_buffer), *file_size_bytes);
 
     infile.close();
 }
