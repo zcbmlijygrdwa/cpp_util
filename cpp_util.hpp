@@ -105,4 +105,48 @@ char computeChecksum(void* buffer, long data_size_byte)
     return checksum;
 }
 
+std::vector<std::string> readLinesFromTxt(std::string file_name)
+{
+
+    std::vector<std::string> output;
+    std::string temp_str;
+
+    std::ifstream myReadFile;
+    myReadFile.open(file_name);
+    if (myReadFile.is_open())
+    {
+        while (!myReadFile.eof())
+        {
+
+            getline(myReadFile, temp_str); // Saves the line in STRING.
+
+            if(temp_str.length() > 0)
+            {
+                //printv(temp_str);
+                output.push_back(temp_str);
+            }
+        }
+    }
+    myReadFile.close();
+
+    return output;
+}
+
+std::vector<std::string> splitString(std::string str, std::string delimiter)
+{
+    std::vector<std::string> output;
+
+    size_t pos = 0;
+    std::string token;
+    while ((pos = str.find(delimiter)) != std::string::npos) {
+        token = str.substr(0, pos);
+        //std::cout << token << std::endl;
+        output.push_back(token);
+        str.erase(0, pos + delimiter.length());
+    }
+    //std::cout << str << std::endl;
+    output.push_back(str);
+
+    return output;
+}
 #endif
