@@ -73,7 +73,7 @@ void assertEquals(T expected, T actual,std::string message="")
 
 #define ASSERT_EQUALS(expected,actual) assertEquals(expected,actual,#actual)
 
-void readFileToBuffer(char* file_path, unsigned char** file_data_buffer, size_t* file_size_bytes)
+inline void readFileToBuffer(char* file_path, unsigned char** file_data_buffer, size_t* file_size_bytes)
 {
     //open file
     std::ifstream infile(file_path);
@@ -94,7 +94,7 @@ void readFileToBuffer(char* file_path, unsigned char** file_data_buffer, size_t*
 }
 
 
-char computeChecksum(void* buffer, long data_size_byte)
+inline char computeChecksum(void* buffer, long data_size_byte)
 {
     char checksum = 0;
     for(long i = 0 ; i < data_size_byte ; i++)
@@ -105,7 +105,7 @@ char computeChecksum(void* buffer, long data_size_byte)
     return checksum;
 }
 
-std::vector<std::string> readLinesFromTxt(std::string file_name)
+inline std::vector<std::string> readLinesFromTxt(std::string file_name)
 {
 
     std::vector<std::string> output;
@@ -132,7 +132,7 @@ std::vector<std::string> readLinesFromTxt(std::string file_name)
     return output;
 }
 
-std::vector<std::string> splitString(std::string str, std::string delimiter)
+inline std::vector<std::string> splitString(std::string str, std::string delimiter)
 {
     std::vector<std::string> output;
 
