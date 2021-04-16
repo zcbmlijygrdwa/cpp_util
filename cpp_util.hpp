@@ -9,6 +9,11 @@
 
 #include <chrono>
 
+#include <dirent.h>
+#include <sys/types.h>
+
+#include <algorithm>
+
 using Clock = std::chrono::high_resolution_clock;
 using Milliseconds = std::chrono::milliseconds;
 using Nanoseconds = std::chrono::nanoseconds;
@@ -149,4 +154,31 @@ inline std::vector<std::string> splitString(std::string str, std::string delimit
 
     return output;
 }
+
+inline std::vector<std::string> getFileListAtDir(std::string path)
+{
+    std::vector<std::string> output;
+    DIR *dir;
+    struct dirent *ent;
+    if ((dir = opendir (path.c_str())) != NULL) {
+        /* print all the files and directories within directory */
+        while ((ent = readdir (dir)) != NULL) {
+            printf ("%s\n", ent->d_name);
+            std::string temp_name = ent->d_name;
+            if(temp_name.compare(".")==0 || temp_name.compare("..")==0)
+                continue;
+            output.push_back(ent->d_name);
+        }
+        closedir (dir);
+    } else {
+        /* could not open directory */
+        perror ("Error: Could not open directory");
+    }
+
+    std::sort(output.begin(), output.end());
+
+    return output;
+}
+
+
 #endif
